@@ -17,7 +17,7 @@
 #   {SAMPLE}.fastp.html
 #   {SAMPLE}.fastp.json
 #
-# Trimming parameters (from original pipeline):
+# Trimming parameters:
 #   - Min average quality: 25
 #   - Min base quality: 20
 #   - Min read length: 50
@@ -38,7 +38,7 @@ THREADS=12
 INPUT_DIR=""
 OUTPUT_DIR=""
 
-# Trimming parameters (from original pipeline)
+# Trimming parameters (change as needed)
 AVERAGE_QUAL=25
 MIN_BASE_QUAL=20
 MIN_LENGTH=50
@@ -87,7 +87,7 @@ fi
 mkdir -p "$OUTPUT_DIR"
 
 # ============================================================================
-# Extract unique sample names and run fastp
+# Extract unique sample names and run fastp (fastq file name structure: {sample_ID}_L001_R1_001.fastq.gz)
 # ============================================================================
 echo "[$(date '+%Y-%m-%d %H:%M:%S')] Starting fastp trimming..."
 
