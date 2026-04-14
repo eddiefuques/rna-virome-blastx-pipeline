@@ -1,0 +1,39 @@
+name: viral-metagenomics-p1
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  # Quality control
+  - fastqc>=0.11
+  - multiqc>=1.14
+  # Trimming
+  - fastp>=0.23
+  # Normalization & utilities
+  - bbtools>=39.0           # bbnorm, bbduk, bbmerge
+  # Assembly
+  - spades>=3.15.3          # includes rnaspades.py
+  # Homology search
+  - diamond>=2.1.9
+  # Abundance quantification
+  - kallisto>=0.48
+  # Perl (for filter_contigs_by_length.pl)
+  - perl>=5.26
+  # Python
+  - python>=3.8
+  - pip
+  - pip:
+    - pandas>=1.3
+  # R and packages for taxonomy (install manually via R or renv)
+  # Rscript -e "install.packages(c('phyloR','dplyr','tidyverse','tibble'))"
+
+# Usage:
+#   conda env create -f environment_pipeline1.yml
+#   conda activate viral-metagenomics-p1
+#
+# Note: phyloR must be installed from within R:
+#   Rscript -e "install.packages('phyloR', repos='https://cran.r-project.org')"
+#
+# Note: RefSeq viral protein database must be downloaded separately:
+#   wget https://ftp.ncbi.nlm.nih.gov/refseq/release/viral/viral.1.protein.faa.gz
+#   diamond makedb --in viral.1.protein.faa.gz -d viral.1.protein.faa
