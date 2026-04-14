@@ -6,12 +6,12 @@
 # Usage: ./run_get_best_hits.sh -i INPUT_DIR -o OUTPUT_DIR [-p PYTHON_SCRIPT]
 #
 # Inputs:
-#   INPUT_DIR:      Directory containing *_diamond_definitivo_tabular_out.txt files
+#   INPUT_DIR:      Directory containing *_diamond_tabular_out.txt files
 #   OUTPUT_DIR:     Directory for best hits output
 #   PYTHON_SCRIPT:  Path to get_best_hits.py (default: same directory as this script)
 #
 # Outputs:
-#   {SAMPLE}_diamond_definitivo_best_hits.txt
+#   {SAMPLE}_diamond_best_hits.txt
 #
 # Dependencies: Python 3, get_best_hits.py
 #
@@ -35,7 +35,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 usage() {
     echo "Usage: $0 -i INPUT_DIR -o OUTPUT_DIR [-p PYTHON_SCRIPT]"
     echo ""
-    echo "  -i INPUT_DIR       Directory containing *_diamond_definitivo_tabular_out.txt files"
+    echo "  -i INPUT_DIR       Directory containing *_diamond_tabular_out.txt files"
     echo "  -o OUTPUT_DIR      Directory for best hits output"
     echo "  -p PYTHON_SCRIPT   Path to get_best_hits.py (default: $SCRIPT_DIR/get_best_hits.py)"
     echo ""
@@ -87,7 +87,7 @@ mkdir -p "$OUTPUT_DIR"
 echo "[$(date '+%Y-%m-%d %H:%M:%S')] Starting best hits extraction..."
 
 SAMPLE_COUNT=0
-for INPUT_FILE in "$INPUT_DIR"/*_diamond_definitivo_tabular_out.txt; do
+for INPUT_FILE in "$INPUT_DIR"/*_diamond_tabular_out.txt; do
     # Check if files exist (in case glob expands to no matches)
     if [[ ! -f "$INPUT_FILE" ]]; then
         echo "Warning: No input files found matching pattern"
@@ -95,8 +95,8 @@ for INPUT_FILE in "$INPUT_DIR"/*_diamond_definitivo_tabular_out.txt; do
     fi
 
     SAMPLE_COUNT=$((SAMPLE_COUNT + 1))
-    SAMPLE_NAME=$(basename "$INPUT_FILE" _diamond_definitivo_tabular_out.txt)
-    OUTPUT_FILE="${OUTPUT_DIR}/${SAMPLE_NAME}_diamond_definitivo_best_hits.txt"
+    SAMPLE_NAME=$(basename "$INPUT_FILE" _diamond_tabular_out.txt)
+    OUTPUT_FILE="${OUTPUT_DIR}/${SAMPLE_NAME}_diamond_best_hits.txt"
 
     echo "[$(date '+%Y-%m-%d %H:%M:%S')] Processing sample $SAMPLE_COUNT: $SAMPLE_NAME"
 
@@ -107,7 +107,7 @@ for INPUT_FILE in "$INPUT_DIR"/*_diamond_definitivo_tabular_out.txt; do
 done
 
 if [[ $SAMPLE_COUNT -eq 0 ]]; then
-    echo "Warning: No input files found matching pattern *_diamond_definitivo_tabular_out.txt"
+    echo "Warning: No input files found matching pattern *_diamond_tabular_out.txt"
     exit 1
 fi
 
