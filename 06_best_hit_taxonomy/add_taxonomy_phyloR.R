@@ -6,11 +6,11 @@
 # Usage: Rscript add_taxonomy_phyloR.R INPUT_DIR OUTPUT_DIR
 #
 # Inputs:
-#   INPUT_DIR:   Directory containing *_diamond_definitivo_tabular_out.txt files
+#   INPUT_DIR:   Directory containing *_diamond_tabular_out.txt files
 #   OUTPUT_DIR:  Directory for taxonomic annotated output
 #
 # Outputs:
-#   {SAMPLE}_blast_and_taxonomy_diamond_results.txt  - Full results with taxonomy
+#   {SAMPLE}_blast_and_taxonomy_diamond_results.txt  - Full results with taxonomy for the BLAST hits
 #   {SAMPLE}_taxonomy_diamond_results.txt            - Condensed taxonomy table
 #
 # Taxonomy levels added:
@@ -44,7 +44,7 @@ suppressPackageStartupMessages({
 # ============================================================================
 print_usage <- function() {
   cat("Usage: Rscript add_taxonomy_phyloR.R INPUT_DIR OUTPUT_DIR\n\n")
-  cat("  INPUT_DIR   Directory containing *_diamond_definitivo_tabular_out.txt files\n")
+  cat("  INPUT_DIR   Directory containing *_diamond_tabular_out.txt files\n")
   cat("  OUTPUT_DIR  Directory for annotated output\n\n")
   quit(status = 1)
 }
@@ -75,11 +75,11 @@ dir.create(output_dir, showWarnings = FALSE, recursive = TRUE)
 # Get list of BLAST output files
 # ============================================================================
 files <- list.files(path = input_dir,
-                     pattern = "_diamond_definitivo_tabular_out\\.txt$",
+                     pattern = "_diamond_tabular_out\\.txt$",
                      full.names = TRUE)
 
 if (length(files) == 0) {
-  cat("Warning: No files matching pattern *_diamond_definitivo_tabular_out.txt found in ",
+  cat("Warning: No files matching pattern *_diamond_tabular_out.txt found in ",
       input_dir, "\n", sep = "")
   quit(status = 1)
 }
