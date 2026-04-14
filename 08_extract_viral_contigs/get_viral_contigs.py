@@ -2,7 +2,7 @@
 
 ################################################################################
 # Script: get_viral_contigs.py
-# Description: Extract viral contigs from assembly based on BLAST taxonomy results
+# Description: Extract viral contigs from assembly based on BLAST best hit taxonomy results
 # Usage: python3 get_viral_contigs.py --blast BLAST_FILE --fasta CONTIGS_FILE --output OUTPUT_FILE [--min_id MIN_ID]
 #
 # Inputs:

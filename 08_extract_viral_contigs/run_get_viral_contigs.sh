@@ -6,7 +6,7 @@
 # Usage: ./run_get_viral_contigs.sh -b BLAST_DIR -f FASTA_DIR -o OUTPUT_DIR [--min_id MIN_ID] [-p PYTHON_SCRIPT]
 #
 # Inputs:
-#   BLAST_DIR:      Directory containing *_diamond_definitivo_best_hits.txt files
+#   BLAST_DIR:      Directory containing *_diamond_best_hits.txt files
 #   FASTA_DIR:      Directory containing *_rnaspades_min500bp_transcripts.fasta files
 #   OUTPUT_DIR:     Directory for viral contigs output
 #   MIN_ID:         Minimum percent identity (default: 70)
@@ -39,7 +39,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 usage() {
     echo "Usage: $0 -b BLAST_DIR -f FASTA_DIR -o OUTPUT_DIR [--min_id MIN_ID] [-p PYTHON_SCRIPT]"
     echo ""
-    echo "  -b BLAST_DIR       Directory containing *_diamond_definitivo_best_hits.txt files"
+    echo "  -b BLAST_DIR       Directory containing *_diamond_best_hits.txt files"
     echo "  -f FASTA_DIR       Directory containing *_rnaspades_min500bp_transcripts.fasta files"
     echo "  -o OUTPUT_DIR      Directory for viral contigs output"
     echo "  --min_id MIN_ID    Minimum percent identity threshold (default: 70)"
@@ -120,7 +120,7 @@ mkdir -p "$OUTPUT_DIR"
 echo "[$(date '+%Y-%m-%d %H:%M:%S')] Starting viral contigs extraction (min_id >= $MIN_ID%)..."
 
 SAMPLE_COUNT=0
-for BLAST_FILE in "$BLAST_DIR"/*_diamond_definitivo_best_hits.txt; do
+for BLAST_FILE in "$BLAST_DIR"/*_diamond_best_hits.txt; do
     # Check if files exist (in case glob expands to no matches)
     if [[ ! -f "$BLAST_FILE" ]]; then
         echo "Warning: No BLAST files found matching pattern"
@@ -128,7 +128,7 @@ for BLAST_FILE in "$BLAST_DIR"/*_diamond_definitivo_best_hits.txt; do
     fi
 
     SAMPLE_COUNT=$((SAMPLE_COUNT + 1))
-    SAMPLE_NAME=$(basename "$BLAST_FILE" _diamond_definitivo_best_hits.txt)
+    SAMPLE_NAME=$(basename "$BLAST_FILE" _diamond_best_hits.txt)
     FASTA_FILE="${FASTA_DIR}/${SAMPLE_NAME}_rnaspades_min500bp_transcripts.fasta"
     OUTPUT_FILE="${OUTPUT_DIR}/${SAMPLE_NAME}_viral_contigs_only.fasta"
 
@@ -151,7 +151,7 @@ for BLAST_FILE in "$BLAST_DIR"/*_diamond_definitivo_best_hits.txt; do
 done
 
 if [[ $SAMPLE_COUNT -eq 0 ]]; then
-    echo "Warning: No BLAST files found matching pattern *_diamond_definitivo_best_hits.txt"
+    echo "Warning: No BLAST files found matching pattern *_diamond_best_hits.txt"
     exit 1
 fi
 
