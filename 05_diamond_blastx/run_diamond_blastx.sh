@@ -12,7 +12,7 @@
 #   THREADS:      Number of threads (default: 20)
 #
 # Outputs:
-#   {SAMPLE}_diamond_definitivo_tabular_out.txt - DIAMOND blastx results (tabular format)
+#   {SAMPLE}_diamond_tabular_out.txt - DIAMOND blastx results (tabular format)
 #
 # DIAMOND parameters (from original pipeline):
 #   - Top hits: 3
@@ -104,7 +104,7 @@ for CONTIG_FILE in "$CONTIGS_DIR"/*_rnaspades_min500bp_transcripts.fasta; do
 
     SAMPLE_COUNT=$((SAMPLE_COUNT + 1))
     SAMPLE_NAME=$(basename "$CONTIG_FILE" _rnaspades_min500bp_transcripts.fasta)
-    OUTPUT_FILE="${OUTPUT_DIR}/${SAMPLE_NAME}_diamond_definitivo_tabular_out.txt"
+    OUTPUT_FILE="${OUTPUT_DIR}/${SAMPLE_NAME}_diamond_tabular_out.txt"
     TEMP_DIR="${OUTPUT_DIR}/.diamond_temp_${SAMPLE_NAME}"
 
     echo "[$(date '+%Y-%m-%d %H:%M:%S')] Processing sample $SAMPLE_COUNT: $SAMPLE_NAME"
