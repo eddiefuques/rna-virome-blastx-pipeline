@@ -1,16 +1,15 @@
-# RNA Virome Discovery Pipeline — BLAST-based Approach
+# RNA Virome Characterization Pipeline — BLAST-based Approach
 
-A bioinformatics pipeline for the discovery and characterization of RNA viruses from Illumina metagenomics data. This pipeline was used to characterize the RNA virome of *Culex* and *Anopheles* mosquitoes across 37 sites in the Amazonian ecoregion.
+A bioinformatics pipeline for the discovery and characterization of RNA viruses from Illumina metagenomics data. This pipeline was used to characterize mosquito-associated RNA viruses across 37 sites in the Western Amazon Basin.
 
-> **Associated publication:** Fuques-Vásquez E. *et al.* (2026). Characterization of the RNA virome of *Culex* and *Anopheles* mosquitoes from 37 sites across the Amazonian ecoregion. *PeerJ*.
+> **Associated publication:** Fuques E. *et al.* (2026). Large-scale metagenomic surveillance study expands the known diversity of RNA viruses in mosquito populations from the Amazon Basin. *PeerJ*.
 
 ---
 
 ## Overview
 
-This pipeline takes paired-end Illumina FASTQ files from RNA metagenomics experiments and produces a final annotated table of viral contigs with taxonomic information and normalized read abundance. Viral identification is based on protein-level homology to the NCBI RefSeq viral protein database using DIAMOND blastx.
+This pipeline takes paired-end Illumina FASTQ files from RNA metagenomics experiments and produces a final table of viral contigs with taxonomic information of their best hits and normalized read abundance. Viral identification is based on protein-level homology to the NCBI RefSeq viral protein database using DIAMOND blastx.
 
-**This pipeline is designed for RNA viromes.** The de novo assembly step uses rnaSPAdes, an assembler optimized for RNA-seq and RNA metagenomics data. For DNA viruses or a combined RNA/DNA approach using multi-tool viral classifiers, see the companion repository: [viral-contig-classification](https://github.com/YOUR_USERNAME/viral-contig-classification).
 
 ---
 
@@ -160,14 +159,7 @@ diamond makedb --in viral.1.protein.faa.gz -d viral.1.protein.faa
 
 ---
 
-## Citation
-
-If you use this pipeline, please cite:
-
-> Fuques-Vásquez E. *et al.* (2026). Characterization of the RNA virome of *Culex* and *Anopheles* mosquitoes from 37 sites across the Amazonian ecoregion. *PeerJ*.
-
----
 
 ## Contact
 
-Eduardo Fuques-Vásquez — eddiefuques@gmail.com
+Eddie Fuques — eddiefuques@gmail.com
